@@ -214,12 +214,10 @@ function displayResult(data) {
 
     elements.result.classList.add('active');
 
-    // 触发移动端动画
-    if (window.innerWidth <= 640) {
-        setTimeout(() => {
-            document.body?.classList.add('content-loaded');
-        }, 100);
-    }
+    // 触发动画
+    setTimeout(() => {
+        document.body?.classList.add('content-loaded');
+    }, 100);
 }
 
 function displayPhotoGallery(images) {
