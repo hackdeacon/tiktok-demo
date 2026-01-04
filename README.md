@@ -1,178 +1,23 @@
-# TikTok Video Downloader 🎵
+# TikTok Downloader 🎬
 
-A modern, web-based TikTok video downloader that allows you to download TikTok videos without watermarks. Built with pure HTML, CSS, and JavaScript - no frameworks, no backend required!
+纯粹、简洁、免费的 TikTok 视频/图片解析下载工具。
 
-[![Deploy to GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-blue?logo=github)](https://github.com/yourusername/tiktok-downloader)
+## 🔧 解析原理
 
-## ✨ Features
+1. **接口请求**：前端通过异步请求（Fetch API）调用公开的 TikTok 解析接口。
+2. **数据处理**：接口根据传入的 TikTok 链接，从 TikTok 服务端获取该视频或图片的原始元数据。
+3. **无水印处理**：接口解析出无水印的原始视频地址（HD Play）或高质量图片链接。
+4. **即时返回**：所有处理过程均在服务端即时完成并返回给前端，前端负责展示及提供下载入口。
 
-- 🎬 Download TikTok videos without watermark
-- 🎵 Extract audio from TikTok videos
-- 🚀 Fast and free to use
-- 📱 Responsive design - works on all devices
-- 🔒 Privacy-focused - no data stored
-- 🎨 Beautiful, modern UI with gradient background
-- ⚡ Pure frontend - no server needed!
+本工具为 **100% 纯前端实现**，不设后端存储，不记录任何用户信息，确保解析过程的高速与私密。
 
-## 🚀 Quick Start
+## 🛡️ 免责声明
 
-### Local Development
+1. **用途限制**：本工具仅供学习和研究使用。用户下载的内容应仅限于个人欣赏，严禁用于任何商业用途。
+2. **版权声明**：所有下载内容的版权归原作者或相关权利人所有。用户在使用本工具时，必须尊重原创作者的知识产权。
+3. **合法合规**：用户需确保其下载行为符合当地法律法规及 TikTok 的服务条款。因用户违规使用而产生的任何法律责任，由用户自行承担。
+4. **稳定性保障**：本工具依赖第三方接口，不保证长期稳定有效。开发者不对因工具失效或接口变更导致的任何损失负责。
 
-Simply open `index.html` in your browser - that's it! No build tools or dependencies needed.
+## 📄 开源协议
 
-Or use a local server:
-
-```bash
-# Python 3
-python -m http.server 8000
-
-# Python 2
-python -m SimpleHTTPServer 8000
-
-# Node.js
-npx serve
-```
-
-Then open http://localhost:8000 in your browser.
-
-## 📦 Deploy to GitHub Pages
-
-### Automatic Deployment (Recommended)
-
-1. Fork or clone this repository
-2. Go to your repository settings on GitHub
-3. Navigate to **Pages** section
-4. Under **Source**, select **GitHub Actions**
-5. Push to the `main` branch - the site will auto-deploy!
-
-Your site will be available at: `https://yourusername.github.io/tiktok-downloader`
-
-### Manual Deployment
-
-1. Go to repository **Settings** → **Pages**
-2. Under **Source**, select **Deploy from a branch**
-3. Select **main** branch and **/ (root)** folder
-4. Click **Save**
-
-Wait a few minutes and your site will be live!
-
-## 🛠️ Project Structure
-
-```
-tiktok-downloader/
-├── index.html              # Main HTML file
-├── style.css              # Styles
-├── script.js              # Frontend JavaScript (calls TikTok API directly)
-├── .github/
-│   └── workflows/
-│       └── deploy.yml     # GitHub Actions workflow
-├── .gitignore
-└── README.md              # Documentation
-```
-
-## 🔧 How It Works
-
-1. **Frontend**: User enters a TikTok video URL
-2. **API Call**: JavaScript directly calls free TikTok API (TikWM)
-3. **Processing**: API fetches video data without watermark
-4. **Response**: Video information and download links are returned
-5. **Download**: User can download video or audio
-
-No backend server needed - everything runs in the browser!
-
-## 📝 Usage Instructions
-
-1. Open the TikTok app or website
-2. Find the video you want to download
-3. Tap the **Share** button
-4. Copy the link
-5. Paste it in the downloader
-6. Click **Download**
-7. Choose to download video or audio
-
-## 🌐 Supported TikTok URL Formats
-
-- `https://www.tiktok.com/@username/video/1234567890`
-- `https://vm.tiktok.com/xxxxx`
-- `https://vt.tiktok.com/xxxxx`
-- `https://tiktok.com/t/xxxxx`
-
-## ⚠️ Important Notes
-
-- This tool is for **personal use only**
-- Please respect content creators' rights
-- Don't use downloaded content for commercial purposes
-- Some videos may not be downloadable due to privacy settings
-- The tool uses third-party API (TikWM) which may have rate limits
-
-## 🔒 Privacy
-
-- ✅ No user data is collected or stored
-- ✅ URLs are processed in real-time
-- ✅ No tracking or analytics
-- ✅ 100% client-side processing
-- ✅ No server logs or databases
-
-## 🛡️ Legal Disclaimer
-
-This tool is provided for educational purposes only. Users are responsible for complying with TikTok's Terms of Service and respecting intellectual property rights. The developers are not responsible for any misuse of this tool.
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📄 License
-
-MIT License - feel free to use this project for personal or commercial purposes.
-
-## 🐛 Troubleshooting
-
-**Video won't download:**
-- Check if the URL is correct and properly formatted
-- Make sure the video is public
-- Try copying the URL again
-- Some private or age-restricted videos cannot be downloaded
-- Check browser console for errors (F12)
-
-**CORS errors:**
-- The free API has CORS enabled, but some browsers may block requests
-- Try using a different browser
-- Make sure you're accessing via HTTP/HTTPS (not file://)
-
-**API errors:**
-- The third-party API (TikWM) may be temporarily down
-- Rate limits may have been reached
-- Try again after a few minutes
-- Check if the TikTok video still exists
-
-**Download not starting:**
-- Some browsers block automatic downloads
-- Check if pop-ups/downloads are blocked
-- Try right-click → "Save link as..."
-
-## 🔗 Links
-
-- [TikTok](https://www.tiktok.com)
-- [GitHub Pages Documentation](https://pages.github.com/)
-- [Report Issues](https://github.com/yourusername/tiktok-downloader/issues)
-
-## 💡 Credits
-
-- Uses [TikWM API](https://www.tikwm.com) for video processing
-- Built with vanilla JavaScript - no frameworks needed!
-- Free third-party API with CORS support
-- Deployed on GitHub Pages - 100% free hosting
-
-## 🌟 Show Your Support
-
-Give a ⭐️ if this project helped you!
-
----
-
-Made with ❤️ | Please use responsibly
+本项目采用 [MIT License](LICENSE) 协议开源。
