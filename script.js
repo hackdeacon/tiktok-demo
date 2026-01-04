@@ -49,6 +49,13 @@ elements.videoUrl.addEventListener('input', () => {
     }
 });
 
+elements.downloadVideo?.addEventListener('click', (e) => {
+    if (currentVideoData?.videoUrl) {
+        e.preventDefault();
+        downloadMedia(currentVideoData.videoUrl, `tiktok_${Date.now()}.mp4`);
+    }
+});
+
 // 粘贴自动解析
 elements.videoUrl.addEventListener('paste', (e) => {
     // 清除之前的防抖计时器
@@ -293,6 +300,46 @@ function closePreview() {
     elements.previewVideo.pause();
     elements.previewSource.src = '';
     document.body.style.overflow = 'auto';
+}
+
+async function downloadMedia(url, filename) {
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+    showToast('Starting download...');
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('Download failed');
+
+        const blob = await response.blob();
+        const blobUrl = URL.createObjectURL(blob);
+
+        const a = document.createElement('a');
+        a.href = blobUrl;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+
+        setTimeout(() => {
+            document.body.removeChild(a);
+            URL.revokeObjectURL(blobUrl);
+        }, 100);
+
+        showToast('Download started!');
+    } catch (error) {
+        console.error('Download error:', error);
+        // Fallback: 如果 Fetch 失败（通常是跨域问题），则直接打开链接
+        if (isIOS) {
+            showToast('iOS: Please long press to save', true);
+            window.open(url, '_blank');
+        } else {
+            const a = document.createElement('a');
+            a.href = url;
+            a.target = '_blank';
+            a.download = filename;
+            a.click();
+        }
+    }
 }
 
 async function copyToClipboard(text, button) {
