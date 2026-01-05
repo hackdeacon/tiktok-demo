@@ -1,4 +1,4 @@
-# TikTok Downloader 🎬
+# TikTok Demo 🎬
 
 纯粹、极简、无后端的 TikTok 视频 / 图片下载工具。
 
